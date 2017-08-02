@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +13,50 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.content-holder {
+    background: #f6f7f8;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &.p-1 {
+        top:8px;
+        left:8px;
+        right:8px;
+        bottom:8px;
+    }
+    &.p-2 {
+        top:16px;
+        left:16px;
+        right:16px;
+        bottom:16px;
+    }
+    &.p-3 {
+        top:24px;
+        left:24px;
+        right:24px;
+        bottom:24px;
+    }
+    &.round {
+        border-radius: 10px;
+        &.r-1 {
+            border-radius: 20px;
+        }
+        &.r-2 {
+            border-radius: 30px;
+        }
+        &.r-2 {
+            border-radius: 40px;
+        }
+    }
+
+    &.relative {
+        position: relative;
+    }
+
+    &.secondary {
+        background-color: #585858
+    }
+}

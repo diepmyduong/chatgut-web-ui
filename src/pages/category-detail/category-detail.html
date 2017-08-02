@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle="left">
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Category {{id}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-fab top right edge>
+    <button ion-fab mini (tap)="openBasket()"><ion-icon name="basket"></ion-icon></button>
+  </ion-fab>
+  <ion-list *ngIf="products">
+    <ion-item *ngFor="let p of products;let i = index">
+      <ion-thumbnail item-start>
+        <img [src]="p.image?p.image:itemPlaceholder"/>
+      </ion-thumbnail>
+      <h2>{{p.title}}</h2>
+      <p><strong>{{p.price | accounting}}</strong></p>
+      <button ion-button clear item-end (tap)="showProduct(p)">Đặt ngay</button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="!products">
+    <ion-item *ngFor="let i of 5 | loop">
+      <ion-thumbnail item-start>
+        <img class="content-holder p-2 round">
+      </ion-thumbnail>
+      <h2 class="content-holder round relative" style="width:100px;height:20px"></h2>
+      <p class="content-holder round relative" style="width:200px;height:20px"><strong></strong></p>
+      <button ion-button clear item-end class="content-holder relative round r-1" style="width:80px" ></button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-padding>
+    <ion-item >
+      <h2 style="font-size:1rem">300 sản phẩm</h2>
+      <strong style="font-size:1rem">1,000,000 Đ</strong>
+      <button ion-button clear item-end icon-right (tap)="checkout()">
+        Thanh toán
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

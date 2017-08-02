@@ -1,0 +1,39 @@
+<!--
+  Generated template for the CategoryListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content class="card-background-page">
+  <div *ngIf="categories">
+    <ion-card *ngFor="let c of categories" (tap)="showCategory(c)">
+      <img [src]="c.image?c.image:itemPlaceholder"/>
+      <ion-row class="backdrop">
+        <ion-col><div class="card-title">{{c.title}}</div></ion-col>
+        <ion-col><div class="card-count">{{c.count?c.count:0}}</div></ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <div *ngIf="!categories">
+    <ion-card *ngFor="let c of 5 | loop">
+      <div class="content-holder"></div>
+      <ion-row class="backdrop" style="height:50px;">
+        <ion-col><div class="card-title content-holder p-1 round r-1" style="right:40px"></div></ion-col>
+        <ion-col><div class="card-count content-holder p-1 round r-1" style="left:80px"></div></ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-padding>
+    <ion-item >
+      <h2 style="font-size:1rem">300 sản phẩm</h2>
+      <strong style="font-size:1rem">1,000,000 Đ</strong>
+      <button ion-button clear item-end icon-right (tap)="checkout()">
+        Thanh toán
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,36 @@
+page-product {
+    .product-image {
+        width:100%;
+        text-align: center;
+        position: relative;
+        img {
+            min-height: 250px;
+            position: relative;
+        }
+    }
+    .backdrop {
+        position: absolute;
+        bottom: 63px;
+        height: auto;
+        left: 0;
+        right:0;
+        background-color: black;
+        opacity: 0.5;
+    }
+
+    .card-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #fff;
+        padding: 5px;
+        text-align: left;
+    }
+
+    .card-price {
+        font-size: 2.0em;
+        font-weight: bold;
+        color: #fff;
+        padding: 5px;
+        text-align: right;
+    }
+}

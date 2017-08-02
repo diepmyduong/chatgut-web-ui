@@ -1,0 +1,119 @@
+<!--
+  Generated template for the ProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Product {{id}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card no-margin class="product-image" *ngIf="product">
+    <img [src]="product.image?product.image:itemPlaceholder"/>
+    <ion-row class="backdrop product-info">
+      <ion-col><div class="card-title">{{product.title}}</div></ion-col>
+      <ion-col><div class="card-price">{{product.price | accounting}}</div></ion-col>
+    </ion-row>
+     <ion-row>
+      <ion-col>
+        <button ion-button icon-left block outline class="active" (tap)="increaseQuantity()" [disabled]="quantity == 99">
+          <ion-icon name="ios-add-circle"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button block outline disabled>
+          {{quantity}}
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left block outline (tap)="decreaseQuantity()" [disabled]="quantity == 1">
+          <ion-icon name="ios-remove-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row> 
+  </ion-card>
+  <ion-card no-margin class="product-image" *ngIf="!product">
+    <img [src]="itemPlaceholder"/>
+    <ion-row class="backdrop product-info" style="height: 50px;">
+      <ion-col><div class="card-title content-holder p-1 round r-1"></div></ion-col>
+      <ion-col><div class="card-price content-holder p-1 round r-1" style="left:70px"></div></ion-col>
+    </ion-row>
+     <ion-row>
+      <ion-col>
+        <button ion-button icon-left block outline class="active" disabled>
+          <ion-icon name="ios-add-circle"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button block outline disabled>
+          0
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left block outline disabled>
+          <ion-icon name="ios-remove-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row> 
+  </ion-card>
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="add-ons">
+      Add-Ons
+    </ion-segment-button>
+    <ion-segment-button value="description">
+      Description
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="tab">
+    <ion-list *ngSwitchCase="'add-ons'">
+      <div *ngIf="add_ons">
+        <div *ngFor="let a of add_ons">
+          <ion-item-divider color="light">{{a.title}}</ion-item-divider>
+          <ion-item *ngFor="let attr of a.attrs">
+            <ion-checkbox color="dark"></ion-checkbox>
+            <ion-label>
+              {{attr.title}}
+            </ion-label>
+            <ion-note item-end>{{attr.price | accounting}}</ion-note>
+          </ion-item>
+        </div>
+      </div>
+      <div *ngIf="!add_ons">
+        <div *ngFor="let a of 2 | loop">
+          <ion-item-divider color="light">
+            <p class="content-holder round p-1 secondary" style="right: 300px"></p>
+          </ion-item-divider>
+          <ion-item *ngFor="let attr of 2 | loop">
+            <ion-checkbox color="dark" disabled></ion-checkbox>
+            <ion-note item-end class="content-holder round p-1" style="left:50px;right: 200px"></ion-note>
+            <ion-note item-end class="content-holder round p-1" style="left: 300px"></ion-note>
+          </ion-item>
+        </div>
+      </div>
+    </ion-list>
+
+    <ion-content *ngSwitchCase="'description'" padding>
+      Long Long Long Text
+    </ion-content>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-padding>
+    <ion-item >
+      <h2 style="font-size:1rem">Thành tiền</h2>
+      <strong style="font-size:1rem">1,000,000 Đ</strong>
+      <button ion-button clear item-end icon-right (tap)="addToBasket()">
+        Thêm vào giỏ hàng
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>
